@@ -2,19 +2,19 @@
 	<h2>View1</h2>
 	Name:
 	<br />
-	<input type="text" ng-model="name" />
-	<br />
+	<input type="text" ng-model="filter.name" />
+	<br /><br />
 	<ul>
-		<li ng-repeat="cust in customers | filter: name | orderBy: 'city'"></li>
+		<li ng-repeat="cust in customers | filter: filter.name | orderBy: 'city'">{{cust.name | uppercase }} - {{cust.city | lowercase}}</li>
 	</ul>
 	<br />
-	Customer Name:
+	Customer Name:<br />
 	<input type="text" ng-model="newCustomer.name" />
 	<br />
-	Customer City:
+	Customer City:<br />
 	<input type="text" ng-model="newCustomer.city" />
-	<br />
+	<br /><br />
 	<button ng-click="addCustomer()">Add Customer</button>
-	<br />
+	<br /><br />
 	<a href="#/view2">View 2</a>
 </div>

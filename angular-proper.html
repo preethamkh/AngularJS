@@ -20,26 +20,6 @@
     <script>
         // define a module
         var demoApp = angular.module('demoApp', ['ngRoute']);
-
-        var controllers = {};
-
-        controllers.SimpleController = function SimpleController($scope) {
-            $scope.customers = [
-                { name: 'Dave Jones', city: 'Phoenix' },
-                { name: 'Jamie Riley', city: 'Altanta' },
-                { name: 'Heedy Wahlin', city: 'Chandler' },
-                { name: 'Thomas Winter', city: 'Seattle' },
-                { name: 'Preetham', city: 'Global' }
-            ];
-			
-			//$scope.addCustomer = function() {
-				//$scope.customers.push({name: $scope.newCustomer.name, city: $scope.newCustomer.city});
-			//}
-        }
-
-        // define a controller
-        // demoApp.controller('SimpleController', SimpleController);
-        demoApp.controller(controllers);
 		
 		// defining routes
 		demoApp.config(function ($routeProvider) {
@@ -57,7 +37,27 @@
 				.otherwise({redirectTo: '/view1'});
 		});
 
-        
+		demoApp.controller('SimpleController', function($scope) {
+            $scope.customers = [
+                { name: 'Dave Jones', city: 'Phoenix' },
+                { name: 'Jamie Riley', city: 'Altanta' },
+                { name: 'Heedy Wahlin', city: 'Chandler' },
+                { name: 'Thomas Winter', city: 'Seattle' },
+                { name: 'Preetham', city: 'Global' }
+            ];
+			
+			$scope.addCustomer = function() {
+				$scope.customers.push(
+				{
+					name: $scope.newCustomer.name,
+					city: $scope.newCustomer.city
+				});
+			};			
+        });
+
+        // define a controller
+        // demoApp.controller('SimpleController', SimpleController);
+        // demoApp.controller(controllers);
     </script>
 
 </body>
